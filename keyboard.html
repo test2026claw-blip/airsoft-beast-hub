@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNET TACTICAL KEYBOARD // PREVIEW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #4ade80;
+            --dark-steel: #0f172a;
+            --key-bg: rgba(30, 41, 59, 0.7);
+        }
+        body {
+            background-color: #020617;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: screen;
+            padding: 20px;
+        }
+        .keyboard-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 16px;
+            padding: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-blur: 10px;
+        }
+        .key {
+            background: var(--key-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            height: 45px;
+            transition: all 0.1s;
+            cursor: pointer;
+            position: relative;
+        }
+        .key:active {
+            transform: scale(0.92);
+            background: var(--neon-green);
+            color: #000;
+        }
+        .key-special {
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        .key-ai {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: #000;
+            font-weight: 900;
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+        }
+        .glow-dot {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-green);
+            border-radius: full;
+            box-shadow: 0 0 5px var(--neon-green);
+        }
+        .font-header { font-family: 'Syncopate', sans-serif; }
+    </style>
+</head>
+<body class="p-4">
+    <header class="text-center mb-12">
+        <h1 class="font-header text-2xl text-green-400 mb-2">SKYNET TACTICAL BOARD</h1>
+        <p class="text-[10px] text-zinc-500 uppercase tracking-widest italic">Adaptive Interface for Mobile Operations</p>
+    </header>
+
+    <div class="keyboard-container space-y-2">
+        <!-- Row 1: Numbers & Symbols -->
+        <div class="grid grid-cols-10 gap-1">
+            <div class="key text-[10px] text-zinc-500">1</div>
+            <div class="key text-[10px] text-zinc-500">2</div>
+            <div class="key text-[10px] text-zinc-500">3</div>
+            <div class="key text-[10px] text-zinc-500">4</div>
+            <div class="key text-[10px] text-zinc-500">5</div>
+            <div class="key text-[10px] text-zinc-500">6</div>
+            <div class="key text-[10px] text-zinc-500">7</div>
+            <div class="key text-[10px] text-zinc-500">8</div>
+            <div class="key text-[10px] text-zinc-500">9</div>
+            <div class="key text-[10px] text-zinc-500">0</div>
+        </div>
+
+        <!-- Row 2: QWERTY -->
+        <div class="grid grid-cols-10 gap-1">
+            <div class="key">Q</div><div class="key">W</div><div class="key">E</div><div class="key">R</div>
+            <div class="key">T</div><div class="key">Y</div><div class="key">U</div><div class="key">I</div>
+            <div class="key">O</div><div class="key">P</div>
+        </div>
+
+        <!-- Row 3: ASDF -->
+        <div class="grid grid-cols-10 gap-1 px-4">
+            <div class="key">A</div><div class="key">S</div><div class="key">D</div><div class="key">F</div>
+            <div class="key">G</div><div class="key">H</div><div class="key">J</div><div class="key">K</div>
+            <div class="key">L</div>
+        </div>
+
+        <!-- Row 4: ZXCV -->
+        <div class="grid grid-cols-10 gap-1">
+            <div class="key key-special">⇧</div>
+            <div class="key">Z</div><div class="key">X</div><div class="key">C</div><div class="key">V</div>
+            <div class="key">B</div><div class="key">N</div><div class="key">M</div>
+            <div class="key col-span-2 key-special">⌫</div>
+        </div>
+
+        <!-- Row 5: Control Row (The Special Stuff) -->
+        <div class="grid grid-cols-6 gap-1">
+            <div class="key text-xs font-bold">?123</div>
+            <div class="key text-lg">🌐</div>
+            <div class="key col-span-2 key-ai">
+                SKYNET
+                <div class="glow-dot animate-pulse"></div>
+            </div>
+            <div class="key text-lg">🛰️</div>
+            <div class="key key-special">ENT</div>
+        </div>
+    </div>
+
+    <div class="mt-12 max-w-md w-full grid grid-cols-1 gap-4">
+        <div class="p-4 bg-zinc-900/50 border-l-2 border-green-500 rounded">
+            <h3 class="text-green-400 font-bold text-xs uppercase mb-2">Feature: AI Uplink (⚡️)</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">Нажми центральную кнопку, чтобы отправить набранный текст в DeepSeek на твоём Jetson. Он переведет, исправит ошибки или предложит ответ прямо в поле ввода.</p>
+        </div>
+        <div class="p-4 bg-zinc-900/50 border-l-2 border-green-500 rounded">
+            <h3 class="text-green-400 font-bold text-xs uppercase mb-2">Feature: Tactical Presets (🛰️)</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">Быстрые вставки: координаты площадок, артикулы запчастей или твои любимые фразы в один клик.</p>
+        </div>
+        <div class="p-4 bg-zinc-900/50 border-l-2 border-green-500 rounded">
+            <h3 class="text-green-400 font-bold text-xs uppercase mb-2">Feature: Dark Ops Design</h3>
+            <p class="text-[11px] text-zinc-400 leading-relaxed">Минималистичный дизайн с эффектом прозрачности. Не отвлекает от игры или работы, выглядит как пульт управления истребителем.</p>
+        </div>
+    </div>
+</body>
+</html>

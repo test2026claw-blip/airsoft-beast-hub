@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNET // OPERATIONS COMMAND</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-amber: #ffaa00;
+            --bg-deep: #0a0a0c;
+            --tactical-gray: #1a1a1e;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: #d1d1d1;
+            font-family: 'JetBrains Mono', monospace;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        .font-display { font-family: 'Syncopate', sans-serif; }
+
+        /* CRT Scanline Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .glitch-text {
+            text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                        -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                        0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+            animation: glitch 500ms infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75), -0.05em -0.025em 0 rgba(0,255,0,.75), -0.025em 0.05em 0 rgba(0,0,255,.75); }
+            14% { text-shadow: 0.05em 0 0 rgba(255,0,0,.75), -0.05em -0.025em 0 rgba(0,255,0,.75), -0.025em 0.05em 0 rgba(0,0,255,.75); }
+            15% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,.75), 0.025em 0.025em 0 rgba(0,255,0,.75), -0.05em -0.05em 0 rgba(0,0,255,.75); }
+            49% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,.75), 0.025em 0.025em 0 rgba(0,255,0,.75), -0.05em -0.05em 0 rgba(0,0,255,.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,.75), 0.05em 0 0 rgba(0,255,0,.75), 0 -0.05em 0 rgba(0,0,255,.75); }
+            99% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,.75), 0.05em 0 0 rgba(0,255,0,.75), 0 -0.05em 0 rgba(0,0,255,.75); }
+            100% { text-shadow: -0.025em 0 0 rgba(255,0,0,.75), -0.025em -0.025em 0 rgba(0,255,0,.75), -0.025em -0.05em 0 rgba(0,0,255,.75); }
+        }
+
+        .tactical-border {
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            position: relative;
+        }
+
+        .tactical-border::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px;
+            width: 10px; height: 10px;
+            border-top: 2px solid var(--neon-cyan);
+            border-left: 2px solid var(--neon-cyan);
+        }
+
+        .tactical-border::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; right: -2px;
+            width: 10px; height: 10px;
+            border-bottom: 2px solid var(--neon-cyan);
+            border-right: 2px solid var(--neon-cyan);
+        }
+
+        .bg-noise {
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05;
+        }
+
+        .status-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .scroll-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen flex flex-col gap-6">
+    <div class="fixed inset-0 bg-noise pointer-events-none"></div>
+
+    <!-- Header Section -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-cyan-900/50 pb-6">
+        <div>
+            <h1 class="font-display text-3xl md:text-5xl font-bold tracking-tighter glitch-text text-white">SKYNET OS</h1>
+            <p class="text-xs mt-2 text-cyan-500 font-bold opacity-80 uppercase tracking-widest">Global Operations Management // Version 1.0.4-beta</p>
+        </div>
+        <div class="text-right font-bold text-[10px] md:text-xs text-cyan-800 uppercase space-y-1">
+            <div class="flex items-center justify-end gap-2">
+                <span>LATENCY: 42MS</span>
+                <div class="w-2 h-2 rounded-full bg-green-500 status-pulse"></div>
+            </div>
+            <div>UPTIME: 04:22:19:11</div>
+            <div class="text-amber-500">UPLINK: ACTIVE</div>
+        </div>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
+        <!-- Sidebar / System Status -->
+        <div class="lg:col-span-3 flex flex-col gap-6">
+            <div class="tactical-border bg-zinc-900/40 p-4 backdrop-blur-sm">
+                <h2 class="text-xs font-bold text-cyan-400 mb-4 border-b border-cyan-900/30 pb-2 uppercase italic">Hardware Interface</h2>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-[10px] mb-1">
+                            <span>GPU LOAD (TEGRA X1)</span>
+                            <span class="text-cyan-400">88%</span>
+                        </div>
+                        <div class="h-1 bg-zinc-800 w-full overflow-hidden">
+                            <div class="h-full bg-cyan-500" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[10px] mb-1">
+                            <span>VRAM ALLOCATION</span>
+                            <span class="text-cyan-400">3.4GB / 4.0GB</span>
+                        </div>
+                        <div class="h-1 bg-zinc-800 w-full overflow-hidden">
+                            <div class="h-full bg-cyan-500" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[10px] mb-1 text-amber-500">
+                            <span>THERMAL THRESHOLD</span>
+                            <span>54°C</span>
+                        </div>
+                        <div class="h-1 bg-zinc-800 w-full overflow-hidden">
+                            <div class="h-full bg-amber-600" style="width: 54%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tactical-border bg-zinc-900/40 p-4 backdrop-blur-sm flex-grow">
+                <h2 class="text-xs font-bold text-cyan-400 mb-4 border-b border-cyan-900/30 pb-2 uppercase italic">Network Topology</h2>
+                <div class="space-y-2 text-[10px]">
+                    <div class="flex justify-between border-b border-white/5 py-1 hover:bg-white/5 transition-colors px-1 group">
+                        <span class="text-zinc-500 group-hover:text-cyan-400">JETSON_NANO</span>
+                        <span>192.168.1.200</span>
+                    </div>
+                    <div class="flex justify-between border-b border-white/5 py-1 hover:bg-white/5 transition-colors px-1 group">
+                        <span class="text-zinc-500 group-hover:text-cyan-400">CONTROL_MASTER</span>
+                        <span>192.168.4.119</span>
+                    </div>
+                    <div class="flex justify-between border-b border-white/5 py-1 hover:bg-white/5 transition-colors px-1 group">
+                        <span class="text-zinc-500 group-hover:text-cyan-400">LLM_CORE</span>
+                        <span class="text-cyan-600">OLLAMA::DS_R1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Content -->
+        <div class="lg:col-span-6 flex flex-col gap-6">
+            <!-- Active Model Card -->
+            <div class="tactical-border bg-zinc-900/60 p-6 flex flex-col md:flex-row gap-6 items-center">
+                <div class="relative w-32 h-32 flex-shrink-0">
+                    <div class="absolute inset-0 border-2 border-cyan-500/20 rounded-full animate-spin" style="animation-duration: 10s"></div>
+                    <div class="absolute inset-2 border border-cyan-500/40 rounded-full animate-reverse-spin" style="animation-duration: 15s"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-cyan-500/10 rounded-full flex items-center justify-center backdrop-blur-md">
+                            <span class="font-display text-xl text-cyan-400">R1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="font-display text-xl text-white mb-1 uppercase tracking-tighter">DeepSeek-R1 Core</h3>
+                    <p class="text-xs text-zinc-500 leading-relaxed mb-4">Autonomous reasoning engine optimized for NVIDIA Maxwell™ architecture. Processing logic gates at 1.42 tokens/sec.</p>
+                    <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                        <span class="px-2 py-1 bg-cyan-900/30 text-cyan-400 text-[9px] font-bold border border-cyan-500/20">QUANT: Q4_K_M</span>
+                        <span class="px-2 py-1 bg-cyan-900/30 text-cyan-400 text-[9px] font-bold border border-cyan-500/20">CONTEXT: 32K</span>
+                        <span class="px-2 py-1 bg-amber-900/30 text-amber-500 text-[9px] font-bold border border-amber-500/20 uppercase">Primary Link</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <button class="tactical-border bg-zinc-900/40 p-4 hover:bg-cyan-500/10 transition-all text-left group">
+                    <div class="text-[9px] text-cyan-600 group-hover:text-cyan-400 mb-2 uppercase tracking-widest font-bold">Operation 01</div>
+                    <div class="text-sm font-bold text-zinc-300">FB_REGISTRATION</div>
+                    <div class="text-[9px] text-zinc-600 mt-1 uppercase italic">Awaiting User Data...</div>
+                </button>
+                <button class="tactical-border bg-zinc-900/40 p-4 hover:bg-cyan-500/10 transition-all text-left group">
+                    <div class="text-[9px] text-cyan-600 group-hover:text-cyan-400 mb-2 uppercase tracking-widest font-bold">Operation 02</div>
+                    <div class="text-sm font-bold text-zinc-300">VOICE_UPLINK</div>
+                    <div class="text-[9px] text-zinc-600 mt-1 uppercase italic">Status: Online</div>
+                </button>
+                <button class="tactical-border bg-zinc-900/40 p-4 hover:bg-cyan-500/10 transition-all text-left group">
+                    <div class="text-[9px] text-cyan-600 group-hover:text-cyan-400 mb-2 uppercase tracking-widest font-bold">Operation 03</div>
+                    <div class="text-sm font-bold text-zinc-300">CRON_SCHEDULER</div>
+                    <div class="text-[9px] text-zinc-600 mt-1 uppercase italic">Jobs: 14 Active</div>
+                </button>
+                <button class="tactical-border bg-zinc-900/40 p-4 hover:bg-cyan-500/10 transition-all text-left group">
+                    <div class="text-[9px] text-cyan-600 group-hover:text-cyan-400 mb-2 uppercase tracking-widest font-bold">Operation 04</div>
+                    <div class="text-sm font-bold text-zinc-300">MEM_FLUSH</div>
+                    <div class="text-[9px] text-zinc-600 mt-1 uppercase italic">Last: 12m ago</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Terminal / Logs -->
+        <div class="lg:col-span-3">
+            <div class="tactical-border bg-zinc-900/40 h-full flex flex-col">
+                <div class="bg-cyan-900/20 p-2 flex justify-between items-center border-b border-cyan-900/50">
+                    <span class="text-[9px] font-bold text-cyan-400 tracking-widest uppercase">Console Stream</span>
+                    <div class="flex gap-1">
+                        <div class="w-1.5 h-1.5 bg-zinc-700"></div>
+                        <div class="w-1.5 h-1.5 bg-zinc-700"></div>
+                        <div class="w-1.5 h-1.5 bg-cyan-500"></div>
+                    </div>
+                </div>
+                <div class="p-3 text-[9px] font-mono text-cyan-800/80 flex-grow overflow-y-auto scroll-hide space-y-2">
+                    <div class="text-cyan-600/60">[21:57:12] Subagent fb-check-v2 complete.</div>
+                    <div class="text-cyan-600/60">[21:58:04] Memory flush committed to 2026-02-21.md.</div>
+                    <div class="text-white/80 animate-pulse">> Initializing GPU kernels...</div>
+                    <div class="text-white/80">> Mapping CUDA cores (128 detected)</div>
+                    <div class="text-green-500/80">> GPU ACCELERATION: [ENABLED]</div>
+                    <div class="text-cyan-600/60">[22:01:19] Voice call initialized to +353...</div>
+                    <div class="text-amber-600/60">[22:04:44] WARN: Thermal limit approaching.</div>
+                    <div class="text-cyan-600/60">[22:08:11] Jetson Nano linked via SSHPass.</div>
+                    <div class="text-white/80 animate-pulse">> Awaiting next instruction...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-cyan-900/30 pt-4 flex flex-col md:flex-row justify-between text-[8px] md:text-[9px] text-cyan-900/50 uppercase font-bold tracking-[0.2em]">
+        <div class="flex gap-4">
+            <span>© 2026 SKYNET CORP</span>
+            <span>SECURE_SHELL_ENABLED</span>
+        </div>
+        <div>
+            DESIGNED FOR MAX // server1.openclaw.local
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation effects
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes reverse-spin {
+                from { transform: rotate(360deg); }
+                to { transform: rotate(0deg); }
+            }
+            .animate-reverse-spin {
+                animation: reverse-spin linear infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

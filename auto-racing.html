@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNET AUTO // PERFORMANCE PARTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --garage-black: #0a0a0a;
+            --nitro-yellow: #facc15;
+            --oil-gray: #1c1c1e;
+            --steel: #3a3a3c;
+        }
+
+        body {
+            background-color: var(--garage-black);
+            color: #efefef;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-header { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .nitro-shadow {
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.15);
+        }
+
+        .part-card {
+            background: linear-gradient(145deg, #161618, #0f0f10);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .part-card:hover {
+            border-color: var(--nitro-yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-bar {
+            background: var(--oil-gray);
+            border-left: 4px solid var(--nitro-yellow);
+        }
+
+        .skew-box {
+            transform: skewX(-10deg);
+        }
+
+        .un-skew {
+            transform: skewX(10deg);
+        }
+
+        /* Industrial patterns */
+        .bg-grid {
+            background-image: radial-gradient(circle, #222 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--nitro-yellow);
+            color: black;
+            font-weight: 900;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-grid">
+    <!-- Top Navigation -->
+    <nav class="flex justify-between items-center px-6 py-4 border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-black/80">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-yellow-400 flex items-center justify-center skew-box">
+                <span class="font-header text-black un-skew text-2xl">S</span>
+            </div>
+            <span class="font-header tracking-tighter text-xl">Skynet <span class="text-yellow-400">Auto</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
+            <a href="#" class="hover:text-yellow-400 transition-colors">Catalog</a>
+            <a href="#" class="hover:text-yellow-400 transition-colors">Garage</a>
+            <a href="#" class="hover:text-yellow-400 transition-colors">Track Orders</a>
+            <a href="#" class="hover:text-yellow-400 transition-colors">Support</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span class="absolute -top-2 -right-2 bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+            </div>
+            <button class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative px-6 py-20 md:py-32 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div class="z-10 max-w-4xl">
+            <h2 class="text-yellow-400 font-mono text-sm mb-4 uppercase tracking-[0.3em]">Precision Engineering // High Performance</h2>
+            <h1 class="text-5xl md:text-8xl font-header mb-8 leading-none tracking-tighter">
+                ELEVATE YOUR <br> <span class="gradient-text">DRIVING MACHINE</span>
+            </h1>
+            <p class="text-zinc-500 text-lg mb-12 max-w-2xl mx-auto">Premium aftermarket components and genuine OEM parts for European and Japanese performance vehicles. Guaranteed fitment. Fast logistics.</p>
+            
+            <!-- Technical Search -->
+            <div class="search-bar p-2 flex flex-col md:flex-row gap-2 max-w-3xl mx-auto shadow-2xl">
+                <select class="bg-transparent border-r border-white/10 px-4 py-3 text-sm focus:outline-none appearance-none cursor-pointer hover:bg-white/5">
+                    <option>Select Make</option>
+                    <option>BMW</option>
+                    <option>Porsche</option>
+                    <option>Nissan</option>
+                </select>
+                <select class="bg-transparent border-r border-white/10 px-4 py-3 text-sm focus:outline-none appearance-none cursor-pointer hover:bg-white/5">
+                    <option>Select Model</option>
+                    <option>M3 (G80)</option>
+                    <option>911 GT3</option>
+                    <option>GT-R (R35)</option>
+                </select>
+                <input type="text" placeholder="VIN or Part Number..." class="flex-grow bg-transparent px-6 py-3 text-sm focus:outline-none">
+                <button class="btn-primary px-10 py-3 uppercase text-xs tracking-tighter">Find Parts</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Categories -->
+    <section class="px-6 py-20 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h3 class="font-header text-2xl tracking-tighter italic">CORE SYSTEMS</h3>
+                <div class="h-1 w-20 bg-yellow-400 mt-2"></div>
+            </div>
+            <a href="#" class="text-zinc-500 hover:text-white text-xs uppercase font-bold border-b border-white/10 pb-1">View Full Catalog</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Part 1 -->
+            <div class="part-card p-6 flex flex-col group">
+                <div class="h-40 bg-zinc-800/50 mb-6 flex items-center justify-center relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=400" alt="Brake System" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <span class="absolute bottom-2 left-2 font-mono text-[10px] text-zinc-500">REF: BK-992-GTS</span>
+                </div>
+                <h4 class="font-header text-sm mb-2">Ceramic Brake Kit</h4>
+                <div class="text-zinc-500 text-xs font-mono mb-4 leading-relaxed">Cross-drilled, heat-treated carbon compound. 6-piston monoblock calipers.</div>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-yellow-400 font-bold">$2,499.00</span>
+                    <button class="bg-white/10 hover:bg-white text-white hover:text-black p-2 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="part-card p-6 flex flex-col group border-yellow-400/20">
+                <div class="h-40 bg-zinc-800/50 mb-6 flex items-center justify-center relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&q=80&w=400" alt="Exhaust" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <span class="absolute bottom-2 left-2 font-mono text-[10px] text-zinc-500">REF: EX-TITAN-X</span>
+                </div>
+                <h4 class="font-header text-sm mb-2 text-yellow-400">Titanium Exhaust</h4>
+                <div class="text-zinc-500 text-xs font-mono mb-4 leading-relaxed">Full cat-back system. 45% weight reduction over stock. TIG welded.</div>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-yellow-400 font-bold">$3,150.00</span>
+                    <button class="bg-white/10 hover:bg-white text-white hover:text-black p-2 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 3 -->
+            <div class="part-card p-6 flex flex-col group">
+                <div class="h-40 bg-zinc-800/50 mb-6 flex items-center justify-center relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1598153346810-860daa814c4b?auto=format&fit=crop&q=80&w=400" alt="Turbo" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <span class="absolute bottom-2 left-2 font-mono text-[10px] text-zinc-500">REF: TB-GT35-RS</span>
+                </div>
+                <h4 class="font-header text-sm mb-2">Stage 2 Turbocharger</h4>
+                <div class="text-zinc-500 text-xs font-mono mb-4 leading-relaxed">Twin-scroll ball bearing. CNC machined compressor wheel.</div>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-yellow-400 font-bold">$1,850.00</span>
+                    <button class="bg-white/10 hover:bg-white text-white hover:text-black p-2 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Part 4 -->
+            <div class="part-card p-6 flex flex-col group">
+                <div class="h-40 bg-zinc-800/50 mb-6 flex items-center justify-center relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=400" alt="Coilovers" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <span class="absolute bottom-2 left-2 font-mono text-[10px] text-zinc-500">REF: SUS-KW-V3</span>
+                </div>
+                <h4 class="font-header text-sm mb-2">Adjustable Coilovers</h4>
+                <div class="text-zinc-500 text-xs font-mono mb-4 leading-relaxed">Inox-line stainless steel. 16-way adjustable damping. Race track specs.</div>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-yellow-400 font-bold">$1,299.00</span>
+                    <button class="bg-white/10 hover:bg-white text-white hover:text-black p-2 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="bg-zinc-900/50 border-y border-white/5 px-6 py-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="flex gap-6">
+                <div class="text-yellow-400 font-header text-4xl opacity-20">01</div>
+                <div>
+                    <h5 class="font-header text-sm mb-3">GLOBAL LOGISTICS</h5>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Express air-freight across Europe and CIS. Custom clearing handled by our experts.</p>
+                </div>
+            </div>
+            <div class="flex gap-6">
+                <div class="text-yellow-400 font-header text-4xl opacity-20">02</div>
+                <div>
+                    <h5 class="font-header text-sm mb-3">GARAGE VERIFIED</h5>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Every SKU is tested on real donor vehicles to ensure perfect fitment and performance.</p>
+                </div>
+            </div>
+            <div class="flex gap-6">
+                <div class="text-yellow-400 font-header text-4xl opacity-20">03</div>
+                <div>
+                    <h5 class="font-header text-sm mb-3">DIRECT SUPPORT</h5>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Technical assistance via Telegram/WhatsApp 24/7. Mechanics talking to mechanics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="px-6 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <span class="font-header tracking-tighter text-sm">Skynet Auto Parts</span>
+                <span class="font-mono text-[10px] text-zinc-600 uppercase">Built for Max // Oper. Manager</span>
+            </div>
+            <div class="flex gap-8 text-[10px] uppercase tracking-widest font-bold text-zinc-500">
+                <a href="#" class="hover:text-yellow-400 transition-colors">Privacy</a>
+                <a href="#" class="hover:text-yellow-400 transition-colors">Terms</a>
+                <a href="#" class="hover:text-yellow-400 transition-colors">Shipment</a>
+            </div>
+            <div class="text-zinc-600 font-mono text-[10px]">
+                © 2026 SKYNET_CORP. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
