@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASTLE FARM DUNBOYNE // LUXURY LIVING</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <style>
+        :root {
+            --warm-stone: #f2f0ef;
+            --deep-oak: #2d2a26;
+            --accent-gold: #c5a35d;
+        }
+        body {
+            background-color: var(--warm-stone);
+            color: var(--deep-oak);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .curved-edge {
+            border-radius: 100px 0 100px 0;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .reveal-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating-nav {
+            backdrop-blur: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .image-slide {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .image-slide.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* Curved containers */
+        .section-curve-up {
+            border-radius: 100% 100% 0 0 / 20px 20px 0 0;
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <!-- Navigation -->
+    <nav class="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
+        <div class="floating-nav px-8 py-4 flex justify-between items-center shadow-sm">
+            <span class="font-serif font-bold text-xl tracking-tighter">CASTLE FARM</span>
+            <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest opacity-60">
+                <a href="#estate" class="hover:text-amber-700 transition-colors">The Estate</a>
+                <a href="#houses" class="hover:text-amber-700 transition-colors">Residences</a>
+                <a href="#location" class="hover:text-amber-700 transition-colors">Location</a>
+            </div>
+            <button class="bg-black text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:scale-105 transition-all">Enquire</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="h-screen relative flex items-center justify-center p-6">
+        <div class="absolute inset-4 hero-gradient curved-edge shadow-2xl"></div>
+        <div class="relative z-10 text-center text-white">
+            <h3 class="text-xs font-bold uppercase tracking-[0.5em] mb-6 opacity-80">Dunboyne // Co. Meath</h3>
+            <h1 class="font-serif text-6xl md:text-9xl mb-8 leading-none">Modern <br> <span class="italic">Heritage</span></h1>
+            <p class="max-w-md mx-auto text-sm opacity-90 leading-relaxed font-light">An exclusive enclave of contemporary homes nestled in the historic heart of Dunboyne. Crafted for the future, inspired by the land.</p>
+        </div>
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section id="estate" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-24 items-center">
+            <div class="reveal-section">
+                <h2 class="font-serif text-4xl md:text-6xl mb-8 leading-tight">Where nature <br> meets <span class="text-accent-gold italic">elegance.</span></h2>
+                <div class="w-20 h-[1px] bg-accent-gold mb-8"></div>
+                <p class="text-lg text-zinc-500 mb-12 leading-relaxed">Castle Farm is more than an address. It's a progressive approach to living, where curved architecture meets the rolling hills of Meath. High-spec finishings, sustainable engineering, and vast green spaces define every inch of this community.</p>
+                <div class="flex gap-12">
+                    <div>
+                        <span class="block text-3xl font-bold">A+</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Energy Rating</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-bold">120</span>
+                        <span class="text-[10px] uppercase font-bold opacity-40">Acre Parkland</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="image-slide aspect-[3/4] rounded-[60px] overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800" alt="Interior" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-white p-8 curved-edge shadow-xl max-w-[240px] reveal-section delay-300">
+                    <p class="text-xs italic leading-relaxed">"The attention to detail in the curved masonry is unlike anything seen in Meath before."</p>
+                    <span class="block mt-4 text-[10px] font-bold uppercase opacity-40">— Chief Architect</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Houses Grid -->
+    <section id="houses" class="py-32 bg-white rounded-[80px] shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <h2 class="font-serif text-5xl md:text-7xl">The <span class="italic text-accent-gold">Collection</span></h2>
+                <p class="text-xs uppercase font-bold tracking-widest opacity-40 max-w-xs text-right">4 & 5 Bedroom Detached Residences Starting from €650,000</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="reveal-section group cursor-pointer">
+                    <div class="aspect-square rounded-[40px] overflow-hidden mb-6 bg-stone-100">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&q=80&w=600" alt="House Type A" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-bold text-xl mb-2">The Willow</h4>
+                    <span class="text-xs opacity-40 uppercase font-bold">4 Bed // 2,100 sq.ft</span>
+                </div>
+                <div class="reveal-section group cursor-pointer delay-200">
+                    <div class="aspect-square rounded-[40px] overflow-hidden mb-6 bg-stone-100">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dbee43ef4?auto=format&fit=crop&q=80&w=600" alt="House Type B" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-bold text-xl mb-2">The Alder</h4>
+                    <span class="text-xs opacity-40 uppercase font-bold">5 Bed // 2,450 sq.ft</span>
+                </div>
+                <div class="reveal-section group cursor-pointer delay-400">
+                    <div class="aspect-square rounded-[40px] overflow-hidden mb-6 bg-stone-100">
+                        <img src="https://images.unsplash.com/photo-1600573472591-ee6b68dc6539?auto=format&fit=crop&q=80&w=600" alt="House Type C" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-bold text-xl mb-2">The Rowan</h4>
+                    <span class="text-xs opacity-40 uppercase font-bold">5 Bed // 2,800 sq.ft</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-zinc-900 text-white mt-32 rounded-t-[100px]">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-4xl md:text-6xl mb-12">Start your new <br> <span class="italic text-accent-gold">chapter.</span></h2>
+            <div class="flex justify-center gap-8 mb-20">
+                <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">in</a>
+                <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">ig</a>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-[0.3em] opacity-40">
+                <span>© 2026 CASTLE FARM DUNBOYNE</span>
+                <a href="index.html" class="hover:text-accent-gold transition-colors underline">Return to Command Hub</a>
+                <span>DEVELOPED BY SKYNET OPS</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-section, .image-slide').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
